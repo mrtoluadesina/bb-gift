@@ -1,0 +1,78 @@
+@import "../../styles/variables";
+
+header {
+  display: flex;
+  flex-direction: column;
+  .top-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3rem 0.7rem;
+    background: $grey-color;
+    .mail-us a {
+      font-size: 12px;
+    }
+    .auth-link ul {
+      display: flex;
+      list-style: none;
+      li {
+        a {
+          font-size: 12px;
+          color: $babybliss-green-2;
+        }
+        &::after {
+          content: '|';
+          padding: 0 0.3rem;
+          color: $babybliss-green-2;
+        }
+        &:last-child::after {
+          display: none;
+        }
+      }
+    }
+  }
+  .header {
+    padding: 0.3rem 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .logo img {
+      max-width: 100px;
+    }
+    nav {
+      display: none;
+    }
+    .btn {
+      color: #ffffff;
+      padding: 0.2rem 1.5rem;
+    }
+  }
+}
+
+@media (min-width: $layout-breakpoint-small) {
+  header {
+    .top-header {
+      padding: 0.2rem 5%;
+    }
+    .header {
+      padding: 0.6rem 5%;
+      nav {
+        display: flex;
+        list-style: none;
+        li {
+          margin: 0 0.5rem;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: $layout-breakpoint-medium) {
+  header {
+    .top-header {
+      padding: 0.2rem 7.5%;
+    }
+    .header {
+      padding: 0.6rem 7.5%;
+    }
+  }
+}
