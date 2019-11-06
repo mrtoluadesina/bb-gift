@@ -1,0 +1,173 @@
+@import "../variables";
+
+section.app {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0.7rem;
+  background-image: url("/assets/images/babybliss-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 90vh;
+  position: relative;
+  &::before {
+    content: "";
+    background: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .app-info,
+  .app-form {
+    z-index: 3;
+  }
+  .app-info {
+    h1 {
+      font-size: 30px;
+      color: #ffffff;
+    }
+    p {
+      color: #ffffff;
+    }
+    h1,
+    p {
+      span {
+        color: $babybliss-green;
+      }
+    }
+  }
+}
+
+section.faq,
+section.testimonials,
+section.about {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0.7rem;
+  align-items: center;
+}
+
+section.faq {
+  .title {
+    text-align: center;
+  }
+  .faq-content {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1rem;
+    .single-faq {
+      min-height: 150px;
+      margin: 1.5rem 0 0.5rem;
+      h2 {
+        font-size: 20px;
+        height: 60px;
+      }
+    }
+  }
+}
+
+section.testimonials {
+  background: $grey-color;
+}
+
+section.about {
+  text-align: center;
+  .locations {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    .single-location {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+      img {
+        width: 100%;
+      }
+      h3 {
+        padding: 1rem 0;
+      }
+      p {
+        text-align: center;
+        padding: 0 2rem;
+      }
+    }
+  }
+  .about-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 2rem 0;
+    p {
+      margin: 1rem 0;
+    }
+  }
+}
+
+@media (min-width: $layout-breakpoint-small) {
+  section.app {
+    padding: 1rem 5%;
+    .app-info {
+      h1 {
+        font-size: 40px;
+      }
+    }
+  }
+
+  section.faq,
+  section.testimonials {
+    padding: 3rem 5%;
+  }
+
+  section.faq {
+    .faq-content {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      .single-faq {
+        flex: 0 0 50%;
+        padding: 1rem 5%;
+      }
+    }
+  }
+}
+
+@media (min-width: $layout-breakpoint-medium) {
+  section.app {
+    padding: 1rem 7.5%;
+    flex-direction: row;
+    .app-info {
+      flex: 0 0 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      h1 {
+        font-size: 50px;
+      }
+    }
+  }
+
+  section.faq {
+    padding: 5rem 7.5%;
+    .faq-content {
+      padding: 2rem 5rem;
+    }
+  }
+
+  section.about {
+    .locations {
+      flex-direction: row;
+      padding: 2rem 10%;
+      max-width: 1300px;
+      .single-location {
+        flex: 0 0 33.333%;
+        padding: 1rem;
+      }
+    }
+    .about-footer {
+      margin: 2rem 0 3rem;
+    }
+  }
+}
