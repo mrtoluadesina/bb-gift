@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import ErrorBoundary from "./common/ErrorBoundary";
-import Home from "./components/Home";
+import Home from "./pages/Home";
 
 function App() {
   return (
