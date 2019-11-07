@@ -1,6 +1,7 @@
 import React from 'react';
 import {faq} from '../../utils/faq';
 import './index.scss';
+import Giftcard from '../../components/Giftcard';
 
 function Home(props) {
   return (
@@ -16,7 +17,7 @@ function Home(props) {
           <span> babybliss</span> items up to the voucher's worth
         </p>
       </div>
-      {/* <RequestGiftCard /> */}
+      <Giftcard />
     </section>
     <section className="faq">
       <h1 className="title">Frequently Asked Questions</h1>
