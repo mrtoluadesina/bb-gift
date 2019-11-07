@@ -1,0 +1,98 @@
+@import "../../styles/variables";
+
+.app-form {
+  justify-content: center;
+  align-items: center;
+  .form {
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    margin-top: 1rem;
+    background: #ffffff;
+    min-width: 300px;
+    .form-header {
+      background: $babybliss-green;
+      padding: 1rem 2rem;
+      border-radius: 5px;
+      font-size: 14px;
+      h2 {
+        color: $babybliss-orange-light;
+        margin-bottom: 0.4rem;
+      }
+      ul {
+        list-style: none;
+        li {
+          color: #ffffff;
+        }
+      }
+    }
+    form {
+      .giftcard-form {
+        padding: 1rem 2rem;
+        fieldset {
+          display: flex;
+          flex-direction: column;
+          border: none;
+          margin: 1rem 0;
+          position: relative;
+          legend {
+            font-size: 16px;
+            margin: 0.5rem 0;
+            padding: 0.5rem 0;
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            &::after {
+              content: "";
+              border: 2px solid $babybliss-orange;
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 2.3rem;
+            }
+            small {
+              a {
+                color: $black-link;
+                font-size: 70%;
+              }
+            }
+          }
+        }
+        input,
+        textarea {
+          width: 100%;
+          padding: 0.5rem;
+          margin: 0.5rem 0;
+          border: $grey-color solid 1px;
+          border-radius: 5px;
+          resize: none;
+        }
+        input[type="button"] {
+          color: #ffffff;
+          margin-bottom: 2rem;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: $layout-breakpoint-small) {
+  .app-form {
+    form {
+      min-width: 320px;
+    }
+  }
+}
+
+@media (min-width: $layout-breakpoint-medium) {
+  .app-form {
+    flex: 0 0 50%;
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 1rem;
+    form {
+      width: 365px;
+    }
+  }
+}
