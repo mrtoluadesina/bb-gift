@@ -1,5 +1,5 @@
+export const SET_SENDER = 'SET_SENDER';
 export const SET_CREATE_GIFTCARD = 'SET_CREATE_GIFTCARD';
 export const SET_LOADING = 'SET_LOADING';
 export const SET_ERROR_MESSAGE = 'SET_ERROR_MESSAGE';
-export const ADD_GIFTCARD = 'ADD_GIFTCARD';
 export const HANDLE_CHANGE = 'HANDLE_CHANGE';
