@@ -11,6 +11,13 @@ export const errorMethod = message => ({
 
 export const senderMethod = sender => ({ type: types.SET_SENDER, sender });
 
+export const handleChangeMethod = (index, name, value) => ({
+  type: types.HANDLE_CHANGE,
+  index,
+  name,
+  value
+});
+
 export const createGiftCardMethod = giftCards => ({
   type: types.SET_CREATE_GIFTCARD,
   giftCards
@@ -19,15 +26,20 @@ export const createGiftCardMethod = giftCards => ({
 // Initialize transaction
 export const requestGiftCard = payload => dispatch => {
   dispatch(loading(true));
+  const {sender, amount} = payload;
+  const senderDetails = {
+    sender,
+    amount
+  }
   return axios
-    .post(BASE_URL + "/transaction", payload)
+    .post(BASE_URL + "/transaction", senderDetails)
     .then(res => {
-      console.log(res);
-      const token = res.data.token;
-      const transactionId = res.data.payload._id;
       // setting values to localstorage
-      localStorage.setItem("transactionToken", token);
-      localStorage.setItem("transactionId", transactionId);
+      localStorage.setItem("transactionToken", res.data.token);
+      localStorage.setItem("transactionId", res.data.payload._id);
+      localStorage.setItem("totalAmount", res.data.payload.amount);
+      // send payload to store
+      dispatch(createGiftCardMethod(payload.giftCards)); // I stopped here - continue from here...
       // stop loading
       dispatch(loading(false));
       return res;
@@ -43,18 +55,17 @@ export const requestGiftCard = payload => dispatch => {
 // Create Giftcard
 export const createGiftCard = (payload, token) => dispatch => {
   dispatch(loading(true));
-  const config = { headers : { Authorization: `Bearer ${token}` }};
+  const config = { headers: { Authorization: `Bearer ${token}` } };
   return axios
-  .post(BASE_URL + "/voucher", payload, config)
-  .then(res => {
-    console.log(res);
-    dispatch(loading(false));
-    if (res.data.error) throw new Error();
-    return res.data;
-  })
-  .catch (error => {
-    dispatch(loading(false));
-    const {message} = error;
-    dispatch(errorMethod(message));
-  })
+    .post(BASE_URL + "/voucher", payload, config)
+    .then(res => {
+      dispatch(loading(false));
+      if (res.data.error) throw new Error();
+      return res.data;
+    })
+    .catch(error => {
+      dispatch(loading(false));
+      const { message } = error;
+      dispatch(errorMethod(message));
+    });
 };
