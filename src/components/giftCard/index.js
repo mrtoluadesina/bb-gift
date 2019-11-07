@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import useForm from "react-hook-form";
 import { connect } from "react-redux";
 import "./index.scss";
-import {addTransition, removeTransition} from '../../helperFunctions/transition';
+import {
+  addTransition,
+  removeTransition
+} from "../../helperFunctions/transition";
 import GiftCardForm from "./Form";
 import GiftCardPayment from "./Payment";
 import GiftCardStatus from "./transactionStatus";
@@ -51,15 +54,16 @@ function Giftcard(props) {
       ]
     };
     await props.requestGiftCardHandler(payload);
-    addTransition('.giftcard-form','play-height');
+    addTransition(".giftcard-form", "play-height");
     setStep(2);
   };
 
   const goBack = () => (
-    <span className="back-btn"
+    <span
+      className="back-btn"
       onClick={e => {
         e.preventDefault();
-        removeTransition('.giftcard-form','play-height');
+        removeTransition(".giftcard-form", "play-height");
         setStep(step - 1);
       }}
     >
@@ -72,7 +76,7 @@ function Giftcard(props) {
   const getReference = () => localStorage.getItem("transactionId");
 
   const callback = async response => {
-    addTransition('.giftcard-form','play-height');
+    addTransition(".giftcard-form", "play-height");
     setStep(3);
     const payload = {
       transactionId: response.reference,
@@ -123,7 +127,26 @@ function Giftcard(props) {
           )}
           {step === 3 && (
             <GiftCardStatus>
-              <h3>Transaction {transactionStatus}</h3>
+              {transactionStatus === "success" ? (
+                <>
+                  <h2>
+                    Your <span>Giftcard</span> has been created and mailed to {values.email}
+                  </h2>
+                  <h3>
+                    Your reference id is {localStorage.getItem("transactionId")}
+                  </h3>
+                  <p>n.b: keep for record and dispute resolution</p>
+                  <span className="btn orange-bg">send another card</span>
+                </>
+              ) : (
+                <>
+                <h2>There has been an issue creating your <span className="error">Giftcard</span>, please reach out to <a href="mailto:support@babybliss.com.ng">support</a> if you have been debited.</h2>
+                <h3>
+                    Your reference id is {localStorage.getItem("transactionId")}
+                  </h3>
+                  <p>n.b: keep for record and dispute resolution</p>
+                </>
+              )}
             </GiftCardStatus>
           )}
         </div>
