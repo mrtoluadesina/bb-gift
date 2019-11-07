@@ -25,18 +25,29 @@
         }
       }
     }
-    form {
-      .giftcard-form {
-        padding: 1rem 2rem;
+    .giftcard-form {
+      padding: 1rem 2rem;
+      height: 690px;
+      transition: height ease 1s;
+      overflow: hidden;
+      &.play-height {
+        height: 355px;
+        transition: height ease 1s;
+      }
+      .back-btn {
+        font-size: 20px;
+        margin-bottom: 1rem;
+        cursor: pointer;
+      }
+      form {
         fieldset {
           display: flex;
           flex-direction: column;
           border: none;
-          margin: 1rem 0;
+          padding: .5rem 0;
           position: relative;
           legend {
             font-size: 16px;
-            margin: 0.5rem 0;
             padding: 0.5rem 0;
             position: relative;
             width: 100%;
@@ -68,9 +79,13 @@
           border-radius: 5px;
           resize: none;
         }
-        input[type="button"] {
-          color: #ffffff;
-          margin-bottom: 2rem;
+        // input[type="button"] {
+        //   color: #ffffff;
+        //   margin-bottom: 2rem;
+        // }
+        input[type="submit"] {
+          font-size: 16px;
+          letter-spacing: 1px;
         }
       }
     }
@@ -79,7 +94,7 @@
 
 @media (min-width: $layout-breakpoint-small) {
   .app-form {
-    form {
+    .form {
       min-width: 320px;
     }
   }
@@ -91,8 +106,8 @@
     display: flex;
     justify-content: flex-end;
     padding-bottom: 1rem;
-    form {
-      width: 365px;
+    .form {
+      width: 400px;
     }
   }
 }
