@@ -1,4 +1,4 @@
-import {SET_CREATE_GIFTCARD, SET_ERROR_MESSAGE, SET_LOADING, SET_SENDER} from './types';
+import {SET_CREATE_GIFTCARD, SET_ERROR_MESSAGE, SET_LOADING, SET_SENDER, HANDLE_CHANGE} from './types';
 
 const initialState = {
   isLoading: false,
@@ -7,13 +7,20 @@ const initialState = {
     {
       message: "",
       amount: "",
-      receipient: {
+      recipient: {
         name: "",
         email: "",
         phone: ""
       }
     }
   ]
+}
+
+const handleGiftCardChange = (state, action) => {
+  const giftCards = state.giftCards.slice(0);
+  let giftCard = giftCards[action.index];
+  giftCard[action.name] = action.value;
+  return giftCards;
 }
 
 export default (state = initialState, action = {}) => {
@@ -37,6 +44,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         sender: action.sender
+      }
+    case HANDLE_CHANGE:
+      return {
+        ...state,
+        giftCards: handleGiftCardChange(state, action)
       }
     default:
       return state
