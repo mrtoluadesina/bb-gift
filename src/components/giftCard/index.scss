@@ -44,7 +44,7 @@
           display: flex;
           flex-direction: column;
           border: none;
-          padding: .5rem 0;
+          padding: 0.5rem 0;
           position: relative;
           legend {
             font-size: 16px;
@@ -79,13 +79,31 @@
           border-radius: 5px;
           resize: none;
         }
-        // input[type="button"] {
-        //   color: #ffffff;
-        //   margin-bottom: 2rem;
-        // }
         input[type="submit"] {
           font-size: 16px;
           letter-spacing: 1px;
+        }
+      }
+      .status {
+        text-align: center;
+        padding: 1.5rem 0;
+        h2 {
+          margin-bottom: 1.5rem;
+          span {
+            color: $babybliss-green;
+            &.error {
+              color: $babybliss-red;
+            }
+          }
+        }
+        p {
+          margin-bottom: 1rem;
+        }
+        span {
+          color: white;
+          &.btn.orange-bg {
+            padding: 0.5rem 1rem;
+          }
         }
       }
     }
