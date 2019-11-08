@@ -39,7 +39,7 @@ export const requestGiftCard = payload => dispatch => {
       localStorage.setItem("transactionId", res.data.payload._id);
       localStorage.setItem("totalAmount", res.data.payload.amount);
       // send payload to store
-      dispatch(createGiftCardMethod(payload.giftCards)); // I stopped here - continue from here...
+      dispatch(createGiftCardMethod(payload.giftCards)); 
       // stop loading
       dispatch(loading(false));
       return res;
