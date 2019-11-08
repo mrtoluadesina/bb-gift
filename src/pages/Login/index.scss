@@ -1,0 +1,51 @@
+@import '../../styles/variables';
+
+section.auth-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  padding: 1rem 0.7rem;
+  .card {
+    width: 100%;
+    .title {
+      margin: 1rem 0;
+      border-bottom: transparent;
+    }
+    input,
+      textarea {
+        width: 100%;
+        padding: 0.8rem;
+        margin: 0.5rem 0;
+        border: $grey-color solid 1px;
+        border-radius: 5px;
+        resize: none;
+      }
+      input[type="button"] {
+        color: #ffffff;
+        margin-bottom: 2rem;
+        font-size: 18px;
+        padding: 0.4rem;
+        letter-spacing: 1px;
+      }
+  }
+}
+
+@media (min-width: $layout-breakpoint-small) {
+  section.auth-section {
+    padding: 1rem 5%;
+    .card {
+      width: 70%;
+    }
+  }
+}
+
+@media (min-width: $layout-breakpoint-medium) {
+  section.auth-section {
+    padding: 1rem 7.5%;
+    .card {
+      width: 50%;
+    }
+  }
+}
