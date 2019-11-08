@@ -26,11 +26,11 @@ export const createGiftCardMethod = giftCards => ({
 // Initialize transaction
 export const requestGiftCard = payload => dispatch => {
   dispatch(loading(true));
-  const {sender, amount} = payload;
+  const { sender, amount } = payload;
   const senderDetails = {
     sender,
     amount
-  }
+  };
   return axios
     .post(BASE_URL + "/transaction", senderDetails)
     .then(res => {
@@ -38,7 +38,7 @@ export const requestGiftCard = payload => dispatch => {
       localStorage.setItem("transactionId", res.data.payload._id);
       localStorage.setItem("totalAmount", res.data.payload.amount);
       // send payload to store
-      dispatch(createGiftCardMethod(payload.giftCards)); 
+      dispatch(createGiftCardMethod(payload.giftCards));
       // stop loading
       dispatch(loading(false));
       return res;
@@ -52,7 +52,7 @@ export const requestGiftCard = payload => dispatch => {
 };
 
 // Create Giftcard
-export const createGiftCard = (payload) => dispatch => {
+export const createGiftCard = payload => dispatch => {
   dispatch(loading(true));
   return axios
     .post(BASE_URL + "/voucher", payload)

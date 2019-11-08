@@ -46,9 +46,9 @@ function Giftcard(props) {
           message: values.message,
           amount: values.amount.toKobo(),
           recipient: {
-            name: values.senderName,
-            email: values.senderEmail,
-            phone: values.senderPhone
+            name: values.name,
+            email: values.email,
+            phone: values.phone
           }
         }
       ]
@@ -70,6 +70,14 @@ function Giftcard(props) {
       ⇠
     </span>
   );
+
+  const sendAnother = () => (
+    <span className="btn orange-bg" onClick={e => {
+      e.preventDefault();
+      removeTransition(".giftcard-form", "play-height");
+      setStep(1);
+    }}>send another card</span>
+  )
 
   const close = () => setStep(1);
 
@@ -137,14 +145,14 @@ function Giftcard(props) {
                     Your reference id is {localStorage.getItem("transactionId")}
                   </h3>
                   <p>n.b: keep for record and dispute resolution</p>
-                  <span className="btn orange-bg">send another card</span>
+                  {sendAnother()}
                 </>
               ) : (
                 <>
                   <h2>
                     There has been an issue creating your{" "}
                     <span className="error">Giftcard</span>, please reach out to{" "}
-                    <a href="mailto:support@babybliss.com.ng">support</a> if you
+                    <a className="support" href="mailto:support@babybliss.com.ng">support</a> if you
                     have been debited.
                   </h2>
                   <h3>
