@@ -130,7 +130,8 @@ function Giftcard(props) {
               {transactionStatus === "success" ? (
                 <>
                   <h2>
-                    Your <span>Giftcard</span> has been created and mailed to {values.email}
+                    Your <span>Giftcard</span> has been created and mailed to{" "}
+                    {values.email}
                   </h2>
                   <h3>
                     Your reference id is {localStorage.getItem("transactionId")}
@@ -140,8 +141,13 @@ function Giftcard(props) {
                 </>
               ) : (
                 <>
-                <h2>There has been an issue creating your <span className="error">Giftcard</span>, please reach out to <a href="mailto:support@babybliss.com.ng">support</a> if you have been debited.</h2>
-                <h3>
+                  <h2>
+                    There has been an issue creating your{" "}
+                    <span className="error">Giftcard</span>, please reach out to{" "}
+                    <a href="mailto:support@babybliss.com.ng">support</a> if you
+                    have been debited.
+                  </h2>
+                  <h3>
                     Your reference id is {localStorage.getItem("transactionId")}
                   </h3>
                   <p>n.b: keep for record and dispute resolution</p>
@@ -164,8 +170,7 @@ const mapDispatchToProps = dispatch => ({
   giftCardInputChange: (index, name, value) =>
     dispatch(handleChangeMethod(index, name, value)),
   requestGiftCardHandler: payload => dispatch(requestGiftCard(payload)),
-  createGiftCardHandler: (payload, token) =>
-    dispatch(createGiftCard(payload, token))
+  createGiftCardHandler: payload => dispatch(createGiftCard(payload))
 });
 
 export default connect(
