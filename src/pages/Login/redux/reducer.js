@@ -3,6 +3,7 @@ import isEmpty from 'lodash/isEmpty';
 
 const initialState = {
   isLoading: false,
+  role: '',
   error: '',
   isAdmin: false,
   isAuthenticated: false
@@ -24,7 +25,8 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         isAuthenticated: !isEmpty(action.token),
-        isAdmin: action.isAdmin
+        isAdmin: action.isAdmin,
+        role: action.role
       }
     default:
       return state;
