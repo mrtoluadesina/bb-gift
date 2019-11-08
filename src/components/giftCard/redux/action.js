@@ -35,7 +35,6 @@ export const requestGiftCard = payload => dispatch => {
     .post(BASE_URL + "/transaction", senderDetails)
     .then(res => {
       // setting values to localstorage
-      localStorage.setItem("transactionToken", res.data.token);
       localStorage.setItem("transactionId", res.data.payload._id);
       localStorage.setItem("totalAmount", res.data.payload.amount);
       // send payload to store
@@ -53,11 +52,10 @@ export const requestGiftCard = payload => dispatch => {
 };
 
 // Create Giftcard
-export const createGiftCard = (payload, token) => dispatch => {
+export const createGiftCard = (payload) => dispatch => {
   dispatch(loading(true));
-  const config = { headers: { Authorization: `Bearer ${token}` } };
   return axios
-    .post(BASE_URL + "/voucher", payload, config)
+    .post(BASE_URL + "/voucher", payload)
     .then(res => {
       dispatch(loading(false));
       if (res.data.error) throw new Error();
