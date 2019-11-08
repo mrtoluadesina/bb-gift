@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, lazy } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -14,6 +14,12 @@ import Home from "./pages/Home";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
+//lazy imports
+const Login = lazy(() => import('./pages/Login'));
+const AppRoute = lazy(() => import('./routes/AppRoutes'));
+
+const isLoggedIn = localStorage.getItem('isLoggedIn')
+
 function App() {
   return (
     <ErrorBoundary>
@@ -23,10 +29,12 @@ function App() {
           <Suspense fallback={<div>One moment please ...</div>}>
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route path="/login" component={Login} />
+              <Route path="/app" component={AppRoute} />
               <Redirect to="/" />
             </Switch>
           </Suspense>
-          <Footer />
+          {!isLoggedIn && <Footer />}
         </Router>
       </Provider>
     </ErrorBoundary>
