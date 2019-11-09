@@ -102,15 +102,16 @@ function Giftcard(props) {
     <div className="app-form">
       <div className="form">
         <div className="form-header">
-          <h2>step by step guide</h2>
-          <ul>
+          {/* <h2>step by step guide</h2> */}
+          <h2 className="no-bottom">Buy a Gift Card</h2>
+          {/* <ul>
             <li>Step 1: Fill out details of voucher beneficiary.</li>
             <li>Step 2: Select the amount of vouchers and pay.</li>
             <li>
               Step 3: Leave a lovely message… We’ll email them a voucher for the
               amount!
             </li>
-          </ul>
+          </ul> */}
         </div>
         <div className="giftcard-form">
           {step > 1 ? goBack() : ""}
